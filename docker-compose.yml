@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  arabic-fraud-detection:
+    build: .
+    container_name: arabic-fraud-detection
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: ["python", "src/train.py", "--model", "aubmindlab/bert-base-arabertv2", "--train", "data/processed/train.json", "--test", "data/processed/test.json", "--output", "models/fraud_detector"]
